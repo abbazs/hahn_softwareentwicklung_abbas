@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hahn.ApplicatonProcess.December2020.Domain</name>
+    </assembly>
+    <members>
+        <member name="P:Hahn.ApplicatonProcess.December2020.Domain.IApplicant.Address">
+            <summary>
+            Address of the applicant at least 10 characters
+            </summary>
+        </member>
+        <member name="P:Hahn.ApplicatonProcess.December2020.Domain.IApplicant.Age">
+            <summary>
+            Age of applicant, between 20 to 60
+            </summary>
+        </member>
+        <member name="P:Hahn.ApplicatonProcess.December2020.Domain.IApplicant.CountryOfOrigin">
+            <summary>
+            A valid country
+            </summary>
+        </member>
+        <member name="P:Hahn.ApplicatonProcess.December2020.Domain.IApplicant.EMailAddress">
+            <summary>
+            A valid email address
+            </summary>
+        </member>
+        <member name="P:Hahn.ApplicatonProcess.December2020.Domain.IApplicant.FamilyName">
+            <summary>
+            Family name of the applicant at least 5 characters
+            </summary>
+        </member>
+        <member name="P:Hahn.ApplicatonProcess.December2020.Domain.IApplicant.Hired">
+            <summary>
+            True or false - Is the applicant hired?
+            </summary>
+        </member>
+        <member name="P:Hahn.ApplicatonProcess.December2020.Domain.IApplicant.ID">
+            <summary>
+            ID of the applicant also the primary key
+            </summary>
+        </member>
+        <member name="P:Hahn.ApplicatonProcess.December2020.Domain.IApplicant.Name">
+            <summary>
+            Name of the applicant
+            </summary>
+        </member>
+    </members>
+</doc>

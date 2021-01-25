@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DocumentationFile>D:\Work\GitHub\hahn_softwareentwicklung_abbas\Hahn.ApplicatonProcess.Application\Hahn.ApplicatonProcess.December2020.Data\Hahn.ApplicatonProcess.December2020.Data.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Dapper" Version="2.0.78" />
+	  <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="5.0.2" />
+	  <PackageReference Include="MySql.Data" Version="8.0.23" />
+	  <PackageReference Include="SQLitePCLRaw.bundle_winsqlite3" Version="2.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Hahn.ApplicatonProcess.December2020.Domain\Hahn.ApplicatonProcess.December2020.Domain.csproj" />
+	</ItemGroup>
+
+</Project>

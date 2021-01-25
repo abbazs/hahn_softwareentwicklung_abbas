@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DocumentationFile>D:\Work\GitHub\hahn_softwareentwicklung_abbas\Hahn.ApplicatonProcess.Application\Hahn.ApplicatonProcess.December2020.Domain\Hahn.ApplicatonProcess.December2020.Domain.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="FluentValidation" Version="9.4.0" />
+	  <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="6.0.1" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hahn.ApplicatonProcess.December2020.Web</name>
+    </assembly>
+    <members>
+        <member name="T:Hahn.ApplicatonProcess.December2020.Web.Controllers.ApplicantController">
+            <summary>
+            API for Applicant - to GET, POST, PUT, DELETE
+            </summary>
+        </member>
+        <member name="M:Hahn.ApplicatonProcess.December2020.Web.Controllers.ApplicantController.Get">
+            <summary>
+            Gets all the list of Applicants available in the system
+            </summary>
+            <returns>List of applicants</returns>
+        </member>
+        <member name="M:Hahn.ApplicatonProcess.December2020.Web.Controllers.ApplicantController.Get(System.Int32)">
+            <summary>
+            Gets the Applicant object for a given id.
+            </summary>
+            <param name="id">ID of a applicant</param>
+            <returns>Applicant object for the given id.</returns>
+        </member>
+        <member name="M:Hahn.ApplicatonProcess.December2020.Web.Controllers.ApplicantController.Post(Hahn.ApplicatonProcess.December2020.Domain.Applicant)">
+            <summary>
+            Creates a new Applicant object with given inputs. 
+            Before creating the Applicant data is validated.
+            </summary>
+            <param name="value">A Applicant model</param>
+            <returns>Returns validation result object</returns>
+        </member>
+        <member name="M:Hahn.ApplicatonProcess.December2020.Web.Controllers.ApplicantController.Put(Hahn.ApplicatonProcess.December2020.Domain.Applicant)">
+            <summary>
+            Update an existing Applicant object/record
+            </summary>
+            <param name="value">Object of the Applicant</param>
+            <returns>Returns validation result object</returns>
+        </member>
+        <member name="M:Hahn.ApplicatonProcess.December2020.Web.Controllers.ApplicantController.Delete(System.Int32)">
+            <summary>
+            Delets an Applicant object/record
+            </summary>
+            <param name="id">Applicant id</param>
+        </member>
+    </members>
+</doc>
