@@ -28,7 +28,7 @@ namespace domain
         public void ConfigureServices(IServiceCollection services)
         {
             string cons = Configuration.GetConnectionString("DefaultConnection");
-            services.AddSingleton<IApplicantRepository>(x => new MySqlApplicantRepository(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSingleton<IApplicantRepository>(x => new EFInMemoryRepository());
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
