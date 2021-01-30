@@ -2,20 +2,16 @@ using Hahn.ApplicatonProcess.December2020.Data;
 using Hahn.ApplicatonProcess.December2020.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
+using Serilog;
 
 namespace domain
 {
@@ -60,7 +56,7 @@ namespace domain
             }
 
             app.UseHttpsRedirection();
-
+            app.UseSerilogRequestLogging();
             app.UseRouting();
 
             app.UseAuthorization();

@@ -54,14 +54,18 @@ namespace Hahn.ApplicatonProcess.December2020.Web.Controllers
         // POST api/<ApplicantController>
         [SwaggerRequestExample(typeof(Applicant), typeof(ApplicantExample))]
         [HttpPost]
-        public ActionResult<ValidationResult> Post([FromBody] Applicant value)
+        public ActionResult<IApplicant> Post([FromBody] Applicant value)
         {
             ValidationResult vr = ApplicantFactory.ValidateApplicant(value);
             if (vr.IsValid)
             {
                 IApplicant applicant = repository.AddApplicant(value);
+                return Ok(applicant);
             }
-            return vr;
+            else
+            {
+                return BadRequest(vr);
+            }
         }
 
         /// <summary>
@@ -69,16 +73,21 @@ namespace Hahn.ApplicatonProcess.December2020.Web.Controllers
         /// </summary>
         /// <param name="value">Object of the Applicant</param>
         /// <returns>Returns validation result object</returns>
-        // PUT api/<ApplicantController>/5
-        [HttpPut("{id}")]
-        public ActionResult<ValidationResult> Put([FromBody] Applicant value)
+        // PUT api/<ApplicantController>
+        [SwaggerRequestExample(typeof(Applicant), typeof(ApplicantUpdateExample))]
+        [HttpPut]
+        public ActionResult<IApplicant> Put([FromBody] Applicant value)
         {
             ValidationResult vr = ApplicantFactory.ValidateApplicant(value);
             if (vr.IsValid)
             {
-                repository.UpdateApplicant(value);
+                IApplicant applicant = repository.UpdateApplicant(value);
+                return Ok(applicant);
             }
-            return vr;
+            else
+            {
+                return BadRequest(vr);
+            }
         }
 
         /// <summary>

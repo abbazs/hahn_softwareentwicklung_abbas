@@ -28,12 +28,13 @@ namespace Hahn.ApplicatonProcess.December2020.Data
             using (var cnn = DBConnection())
             {
                 cnn.Open();
-                applicant.ID = cnn.Query<int>(
+                applicant.ID = cnn.ExecuteScalar<int>(
                     @"INSERT INTO Applicant
                     (Name, FamilyName, Address, CountryOfOrigin, EMailAddress, Age, Hired)
                     VALUES
                     (@Name, @FamilyName, @Address, @CountryOfOrigin, @EMailAddress, @Age, @Hired)
-                    select last_insert_rowid()", applicant).First();
+                    ", applicant);
+                applicant.ID = cnn.ExecuteScalar<int>("SELECT LAST_INSERT_ID(ID) FROM Applicant ORDER BY LAST_INSERT_ID(ID) DESC LIMIT 1");
             }
             return applicant;
         }
@@ -48,20 +49,21 @@ namespace Hahn.ApplicatonProcess.December2020.Data
             using (var cnn = DBConnection())
             {
                 cnn.Open();
-                cnn.Query<int>(@"DELETE FROM Applicant WHERE ID = @id");
+                cnn.Execute(@"DELETE FROM Applicant WHERE ID = @id", new { id = id });
+                return true;
             }
-            return true;
+            return false;
         }
 
         public IApplicant GetApplicant(int id)
         {
-            IApplicant ret = null;
+            IEnumerable<Applicant> applicants = null;
             using (var cnn = DBConnection())
             {
                 cnn.Open();
-                ret = cnn.Query<IApplicant>(@"SELECT * FROM Applicant WHERE ID = @id").FirstOrDefault();
+                applicants = cnn.Query<Applicant>(@"SELECT * FROM Applicant WHERE ID = @id", new { id = id });
             }
-            return ret;
+            return applicants?.FirstOrDefault();
         }
 
         public List<IApplicant> GetApplicants()
@@ -75,9 +77,23 @@ namespace Hahn.ApplicatonProcess.December2020.Data
             return ret?.ToList();
         }
 
-        public bool UpdateApplicant(IApplicant applicant)
+        public IApplicant UpdateApplicant(IApplicant applicant)
         {
-            throw new NotImplementedException();
+            using (var cnn = DBConnection())
+            {
+                cnn.Open();
+                cnn.Execute(
+                    @"UPDATE Applicant SET Name = @Name,
+                    FamilyName = @FamilyName,
+                    Address = @Address,
+                    CountryOfOrigin = @CountryOfOrigin,
+                    EMailAddress = @EMailAddress,
+                    Age = @Age,
+                    Hired = @Hired
+                    WHERE ID = @ID
+                    ", applicant);
+            }
+            return applicant;
         }
 
         private void CreateDatabase()

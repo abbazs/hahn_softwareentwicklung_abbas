@@ -10,7 +10,7 @@ namespace Hahn.ApplicatonProcess.December2020.Data
     public interface IApplicantRepository
     {
         IApplicant AddApplicant(IApplicant applicant);
-        bool UpdateApplicant(IApplicant applicant);
+        IApplicant UpdateApplicant(IApplicant applicant);
         bool DeleteApplicant(IApplicant applicant);
         bool DeleteApplicant(int id);
         List<IApplicant> GetApplicants();

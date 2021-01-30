@@ -1,10 +1,16 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Configuration;
 using Serilog;
+using Serilog.Filters;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace domain
+namespace SerilogExample
 {
     public class Program
     {
@@ -17,7 +23,7 @@ namespace domain
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(configuration)
                 .CreateLogger();
-
+            
             try
             {
                 Log.Information("Application starting up");
