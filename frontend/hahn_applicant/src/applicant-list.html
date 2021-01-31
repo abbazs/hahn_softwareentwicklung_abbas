@@ -1,0 +1,22 @@
+<template>
+  <div class="card mt-5 shadow-sm text-center bg-white-rounded" style="width: 18rem;">
+    <h5 class="card-header text-white bg-primary">Applicants</h5>
+    <div class="card-body">
+      <div class="contact-list">
+        <div class="list-group">
+          <div repeat.for="applicant of applicants" class="card mt-1 shadow-sm text-center bt-white-rounded">
+            <strong class="card-header text-white bg-primary">${applicant.name} ${applicant.familyName}</strong>
+            <small class="text-left ml-2">
+              <i class="fa fa-envelope" aria-hidden="true"></i> ${applicant.eMailAddress}</small>
+            <small class="text-left ml-2">Age ${applicant.age}</small>
+            <small class="text-left ml-2"><i class="fa fa-globe" aria-hidden="true"></i>
+              ${applicant.countryOfOrigin}</small>
+
+            <small class="text-left ml-2">Hired <span class="badge bg-success" if.bind="applicant.hired">Yes</span>
+              <span class="badge bg-danger" else>No</span></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

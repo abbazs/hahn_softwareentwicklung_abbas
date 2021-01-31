@@ -5,7 +5,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	  <DocumentationFile>D:\Work\GitHub\hahn_softwareentwicklung_abbas\Hahn.ApplicatonProcess.Application\Hahn.ApplicatonProcess.December2020.Data\Hahn.ApplicatonProcess.December2020.Data.xml</DocumentationFile>
+	  <DocumentationFile>Hahn.ApplicatonProcess.December2020.Data.xml</DocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>

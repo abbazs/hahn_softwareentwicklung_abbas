@@ -1,0 +1,28 @@
+<template>
+  <div class="card mt-5 shadow-sm text-center bg-white-rounded" style="width: 18rem;">
+    <h5 class="card-header text-white bg-primary">Add Applicant</h5>
+    <div class="card-body">
+      <form class="row g-3">
+        <input class="form-control mb-1" type="text" placeholder="Name" aria-label="Name" value.bind="applicant.Name">
+        <input class="form-control mb-1" type="text" placeholder="Family Name" aria-label="FamilyName"
+          value.bind="applicant.FamilyName">
+        <input class="form-control mb-1" type="email" placeholder="email address" aria-label="email"
+          value.bind="applicant.EMailAddress">
+        <input class="form-control mb-1" type="number" placeholder="Age" aria-label="Age" value.bind="applicant.Age">
+        <input class="form-control mb-1" type="text" placeholder="Address" aria-label="Address"
+          value.bind="applicant.Address">
+        <input class="form-control mb-1" type="text" placeholder="Country of origin" aria-label="country"
+          value.bind="applicant.CountryOfOrigin">
+        <span class="form-control text-left">
+          <label for="hired">Hired?</label>
+          <input type="checkbox" placeholder="Hired?" aria-label="Hired" value.bind="applicant.Hired">
+        </span>
+
+      </form>
+    </div>
+    <div class="card-footer">
+      <button type="submit" click.delegate="add()" class="btn btn-primary">Add</button>
+      <button click.delegate="reset()" class="btn btn-primary">Rest</button>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,16 @@
+<template>
+  <require from="./applicant-list"></require>
+  <require from="./add-applicant"></require>
+  <nav class="navbar navbar-light bg-light border-bottom fixed-top" role="navigation">
+    <a class="navbar-brand" href="#">
+      <i class="fa fa-user"></i>
+      <span>Applicants</span>
+    </a>
+  </nav>
+  <div class="container-md mt-5">
+    <div class="row">
+      <applicant-list class="col-sm-5 col-md-4"></applicant-list>
+      <add-applicant class="col-sm-7 col-md-8"></add-applicant>
+    </div>
+  </div>
+</template>

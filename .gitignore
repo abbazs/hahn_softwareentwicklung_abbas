@@ -5,6 +5,8 @@
 # User Files
 Help.txt
 Requirements/
+learn/
+log*.json
 
 # User-specific files
 *.rsuser

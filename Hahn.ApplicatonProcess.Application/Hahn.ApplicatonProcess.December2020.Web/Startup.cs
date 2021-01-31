@@ -29,6 +29,14 @@ namespace domain
         {
             string cons = Configuration.GetConnectionString("DefaultConnection");
             services.AddSingleton<IApplicantRepository>(x => new EFInMemoryRepository());
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder => {
+                    builder.WithOrigins("http://localhost:8080")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -38,6 +46,7 @@ namespace domain
                 {
                     string FileName = $"{a.GetName().Name}.xml";
                     string FilePath = Path.Combine(Path.GetDirectoryName(a.Location), FileName);
+                    Console.WriteLine($"{FilePath}");
                     c.IncludeXmlComments(FilePath);
                 }
                 c.ExampleFilters();
@@ -52,13 +61,13 @@ namespace domain
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "domain v1"));
+                app.UseSwaggerUI(c => {c.SwaggerEndpoint("/swagger/v1/swagger.json", "Applicant api v1");
+                c.RoutePrefix = String.Empty;});
             }
 
-            app.UseHttpsRedirection();
             app.UseSerilogRequestLogging();
             app.UseRouting();
-
+            app.UseCors();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
