@@ -1,27 +1,104 @@
 <template>
-  <div class="card mt-5 shadow-sm text-center bg-white-rounded" style="width: 18rem;">
+  <style>
+    p.aurelia-validation-message {
+      display: inline;
+      margin-left: 5px;
+    }
+
+    p.aurelia-validation-message:empty {
+      display: none;
+    }
+
+    .label {
+      text-align: left;
+      float: left;
+    }
+
+    .has-success label {
+      color: greenyellow;
+    }
+
+    .has-warning label {
+      color: red;
+    }
+
+    .has-error label {
+      color: red;
+    }
+
+    .has-error {
+      border-color: red;
+    }
+  </style>
+
+  <div class="card mt-5 shadow-sm text-center bg-white-rounded" style="width: 18rem">
     <h5 class="card-header text-white bg-primary">Add Applicant</h5>
     <div class="card-body">
       <form class="row g-3">
-        <input class="form-control mb-1" type="text" placeholder="Name" aria-label="Name" value.bind="applicant.Name">
-        <input class="form-control mb-1" type="text" placeholder="Family Name" aria-label="FamilyName"
-          value.bind="applicant.FamilyName">
-        <input class="form-control mb-1" type="email" placeholder="email address" aria-label="email"
-          value.bind="applicant.EMailAddress">
-        <input class="form-control mb-1" type="number" placeholder="Age" aria-label="Age" value.bind="applicant.Age">
-        <input class="form-control mb-1" type="text" placeholder="Address" aria-label="Address"
-          value.bind="applicant.Address">
-        <input class="form-control mb-1" type="text" placeholder="Country of origin" aria-label="country"
-          value.bind="applicant.CountryOfOrigin">
+        <div class="form-group" validation-errors.bind="NameErrors" class.bind="NameErrors.length ? 'has-error' : ''">
+          <label for="Name">Name</label>
+          <input class="form-control mb-1" type="text" placeholder="Name" aria-label="Name"
+            value.bind="applicant.Name & validate" class.bind="NameErrors.length ? 'has-error' : ''" />
+          <span if.bind="NameErrors.length > 0" class="help-block" repeat.for="errorInfo of NameErrors">
+            ${errorInfo.error.message}
+          </span>
+        </div>
+        <div class="form-group" validation-errors.bind="FamilyNameErrors"
+          class.bind="FamilyNameErrors.length ? 'has-error' : ''">
+          <label for="FamilyName">Family Name</label>
+          <input class="form-control mb-1" type="text" placeholder="Family Name" aria-label="FamilyName"
+            value.bind="applicant.FamilyName & validate" class.bind="FamilyNameErrors.length ? 'has-error' : ''" />
+          <span if.bind="FamilyNameErrors.length > 0" class="help-block" repeat.for="errorInfo of FamilyNameErrors">
+            ${errorInfo.error.message}
+          </span>
+        </div>
+        <div class="form-group" validation-errors.bind="EMailAddressErrors"
+          class.bind="EMailAddressErrors.length ? 'has-error' : ''">
+          <label for="EMailAddress">Email</label>
+          <input class="form-control mb-1" type="email" placeholder="email address" aria-label="email"
+            value.bind="applicant.EMailAddress & validate" class.bind="EMailAddressErrors.length ? 'has-error' : ''" />
+          <span if.bind="EMailAddressErrors.length > 0" class="help-block" repeat.for="errorInfo of EMailAddressErrors">
+            ${errorInfo.error.message}
+          </span>
+        </div>
+        <div class="form-group" validation-errors.bind="AgeErrors" class.bind="AgeErrors.length ? 'has-error' : ''">
+          <label for="Age">Age</label>
+          <input class="form-control mb-1" type="number" placeholder="email address" aria-label="age"
+            value.bind="applicant.Age & validate" class.bind="AgeErrors.length ? 'has-error' : ''" />
+          <span if.bind="AgeErrors.length > 0" class="help-block has-error" repeat.for="errorInfo of AgeErrors">
+            ${errorInfo.error.message}
+          </span>
+        </div>
+        <div class="form-group" validation-errors.bind="AddressErrors"
+          class.bind="AddressErrors.length ? 'has-error' : ''">
+          <label for="Address">Address</label>
+          <input class="form-control mb-1" type="text" placeholder="Address" aria-label="Address"
+            value.bind="applicant.Address & validate" class.bind="AddressErrors.length ? 'has-error' : ''" />
+          <span if.bind="AddressErrors.length > 0" class="help-block has-error" repeat.for="errorInfo of AddressErrors">
+            ${errorInfo.error.message}
+          </span>
+        </div>
+        <div class="form-group" validation-errors.bind="CountryOfOriginErrors"
+          class.bind="CountryOfOriginErrors.length ? 'has-error' : ''">
+          <label for="Address">Country</label>
+          <input class="form-control mb-1" type="text" placeholder="Country of origin" aria-label="country"
+            value.bind="applicant.CountryOfOrigin & validate"
+            class.bind="CountryOfOriginErrors.length ? 'has-error' : ''" />
+          <span if.bind="CountryOfOriginErrors.length > 0" class="help-block has-error"
+            repeat.for="errorInfo of CountryOfOriginErrors">
+            ${errorInfo.error.message}
+          </span>
+        </div>
         <span class="form-control text-left">
           <label for="hired">Hired?</label>
-          <input type="checkbox" placeholder="Hired?" aria-label="Hired" value.bind="applicant.Hired">
+          <input type="checkbox" placeholder="Hired?" aria-label="Hired" value.bind="applicant.Hired" />
         </span>
-
       </form>
     </div>
     <div class="card-footer">
-      <button type="submit" click.delegate="add()" class="btn btn-primary">Add</button>
+      <button type="submit" click.delegate="add()" class="btn btn-primary">
+        Add
+      </button>
       <button click.delegate="reset()" class="btn btn-primary">Rest</button>
     </div>
   </div>
